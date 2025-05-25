@@ -1,0 +1,280 @@
+LD I, label10
+CALL label26
+CALL label27
+CALL label11
+label0:
+ADD V0, 0x01
+DRW V0, V1, 0x1
+SNE V0, 0x25
+JP label0
+label1:
+ADD V1, 0xff
+DRW V0, V1, 0x1
+LD V0, 0x1a
+DRW V0, V1, 0x1
+LD V0, 0x25
+SNE V1, 0x00
+JP label1
+label2:
+RND V4, 0x70
+SE V4, 0x70
+JP label2
+RND V3, 0x03
+LD V0, 0x1e
+LD V1, 0x03
+CALL label6
+label3:
+LD delay, V5
+DRW V0, V1, 0x4
+SNE Vf, 0x01
+JP label4
+DRW V0, V1, 0x4
+ADD V1, 0xff
+DRW V0, V1, 0x4
+CALL label15
+JP label2
+label4:
+KP V7
+CALL label7
+KP V8
+CALL label8
+KP V9
+CALL label9
+KNP V2
+JP label5
+LD V6, 0x00
+LD delay, V6
+label5:
+LD V6, delay
+SNE V6, 0x00
+JP label4
+DRW V0, V1, 0x4
+ADD V1, 0x01
+JP label3
+label6:
+LD I, label12
+ADD I, V4
+LD V6, 0x00
+SE V3, 0x01
+LD V6, 0x04
+SE V3, 0x02
+LD V6, 0x08
+SE V3, 0x03
+LD V6, 0x0c
+ADD I, V6
+RET
+label7:
+DRW V0, V1, 0x4
+ADD V0, 0xff
+CALL label13
+SNE Vf, 0x01
+RET
+DRW V0, V1, 0x4
+ADD V0, 0x01
+CALL label13
+RET
+label8:
+DRW V0, V1, 0x4
+ADD V0, 0x01
+CALL label13
+SNE Vf, 0x01
+RET
+DRW V0, V1, 0x4
+ADD V0, 0xff
+CALL label13
+RET
+label9:
+DRW V0, V1, 0x4
+ADD V3, 0x01
+SE V3, 0x04
+LD V3, 0x00
+CALL label6
+CALL label13
+SNE Vf, 0x01
+RET
+DRW V0, V1, 0x4
+ADD V3, 0xff
+SE V3, 0xff
+LD V3, 0x03
+CALL label6
+CALL label13
+RET
+label10:
+WORD 0x8000
+label11:
+LD V7, 0x0a
+LD V8, 0x00
+LD V9, 0x0f
+LD V1, 0x1f
+LD V5, 0x10
+LD V2, 0x0b
+RET
+label12:
+WORD 0x40e0
+WORD 0x0000
+WORD 0x40c0
+WORD 0x4000
+WORD 0x00e0
+WORD 0x4000
+WORD 0x4060
+WORD 0x4000
+WORD 0x4040
+WORD 0x6000
+WORD 0x20e0
+WORD 0x0000
+WORD 0xc040
+WORD 0x4000
+WORD 0x00e0
+WORD 0x8000
+WORD 0x4040
+WORD 0xc000
+WORD 0x00e0
+WORD 0x2000
+WORD 0x6040
+WORD 0x4000
+WORD 0x80e0
+WORD 0x0000
+WORD 0x40c0
+WORD 0x8000
+WORD 0xc060
+WORD 0x0000
+WORD 0x40c0
+WORD 0x8000
+WORD 0xc060
+WORD 0x0000
+WORD 0x80c0
+WORD 0x4000
+WORD 0x0060
+WORD 0xc000
+WORD 0x80c0
+WORD 0x4000
+WORD 0x0060
+WORD 0xc000
+WORD 0xc0c0
+WORD 0x0000
+WORD 0xc0c0
+WORD 0x0000
+WORD 0xc0c0
+WORD 0x0000
+WORD 0xc0c0
+WORD 0x0000
+WORD 0x4040
+WORD 0x4040
+WORD 0x00f0
+WORD 0x0000
+WORD 0x4040
+WORD 0x4040
+WORD 0x00f0
+WORD 0x0000
+label13:
+DRW V0, V1, 0x4
+LD V6, 0x35
+label14:
+ADD V6, 0xff
+SNE V6, 0x00
+JP label14
+RET
+label15:
+LD Vc, 0x05
+LD buzzer, Vc
+LD I, label10
+LD Vc, V1
+SNE Vc, 0x1e
+ADD Vc, 0x01
+SNE Vc, 0x1e
+ADD Vc, 0x01
+SNE Vc, 0x1e
+ADD Vc, 0x01
+label16:
+CALL label17
+SE Vb, 0x0a
+CALL label19
+SE V1, Vc
+RET
+ADD V1, 0x01
+JP label16
+label17:
+LD V0, 0x1b
+LD Vb, 0x00
+label18:
+DRW V0, V1, 0x1
+SNE Vf, 0x00
+ADD Vb, 0x01
+DRW V0, V1, 0x1
+ADD V0, 0x01
+SNE V0, 0x25
+JP label18
+RET
+label19:
+LD V0, 0x1b
+label20:
+DRW V0, V1, 0x1
+ADD V0, 0x01
+SNE V0, 0x25
+JP label20
+LD Ve, V1
+LD Vd, Ve
+ADD Ve, 0xff
+label21:
+LD V0, 0x10
+LD buzzer, V0
+LD V0, 0x1b
+LD Vb, 0x00
+label22:
+DRW V0, Ve, 0x1
+SNE Vf, 0x00
+JP label23
+DRW V0, Ve, 0x1
+JP label24
+label23:
+DRW V0, Vd, 0x1
+ADD Vb, 0x01
+label24:
+ADD V0, 0x01
+SNE V0, 0x25
+JP label22
+SE Vb, 0x00
+JP label25
+ADD Vd, 0xff
+ADD Ve, 0xff
+SNE Vd, 0x01
+JP label21
+label25:
+CALL label26
+SNE Vf, 0x01
+CALL label26
+ADD Va, 0x01
+CALL label26
+LD V0, Va
+LD Vd, 0x07
+AND V0, Vd
+SE V0, 0x04
+ADD V5, 0xfe
+SE V5, 0x02
+LD V5, 0x04
+RET
+label26:
+LD I, 0x700
+SAVE V2
+LD I, 0x804
+BCD Va
+LOAD V2
+HEX I, V0
+LD Vd, 0x32
+LD Ve, 0x00
+DRW Vd, Ve, 0x5
+ADD Vd, 0x05
+HEX I, V1
+DRW Vd, Ve, 0x5
+ADD Vd, 0x05
+HEX I, V2
+DRW Vd, Ve, 0x5
+LD I, 0x700
+LOAD V2
+LD I, label10
+RET
+label27:
+LD Va, 0x00
+LD V0, 0x19
+RET
+WORD 0x3723
