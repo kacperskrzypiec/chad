@@ -4,11 +4,13 @@ A simple assembler and diassembler for CHIP-8. The disassembler uses a linear sw
 
 I wanted to modify [Tetris [Fran Dachille, 1991].ch8](https://github.com/kripod/chip8-roms/blob/master/games/Tetris%20%5BFran%20Dachille%2C%201991%5D.ch8) ROM because I felt I could tweak it a bit. At first, I tried poking at the raw bytes using a hex editor, but it quickly became cumbersome since each instruction contains a hard-coded address. At that point, it became apparent that a disassembler and assembler were needed to achieve my goal. Given how simple [CHIP-8](https://en.wikipedia.org/wiki/CHIP-8) is, I decided to create them myself.
 
+I reverse-engineered the disassembled code and made several enhancements: the score counter is always visible, controls have been changed, sounds have been added for when a tetromino is placed and when a line is cleared.
+
 Kotlin was chosen for this project because I wanted to get a feel for it (and to pass an Android exam. It actually helped because there were questions on bitwise operations).
 
 You can find example ROMs, and their disassembled code in the [data](data) directory. ROMs are taken from [kripod/chip8-roms](https://github.com/kripod/chip8-roms).
 
-I also created a CHIP-8 emulator in C++ with SDL [here](https://github.com/kacperskrzypiec/chip8emulator).
+I also created a CHIP-8 emulator in C++ with SDL3 [here](https://github.com/kacperskrzypiec/chip8emulator).
 
 ## Usage
 ```
